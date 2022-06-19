@@ -1,0 +1,26 @@
+@import "Utility.scss";
+
+.container, .container:focus{
+    border:1px solid $grey;
+    background: $white;
+    padding: 0rem 1.2rem;
+    font-size: 0.75rem;
+    display: flex;
+    height: 3.4rem;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: $black;
+    opacity:0.9;
+   }
+    
+   .container:hover  {
+        border:1px solid $grey;
+        background: $grey;
+        color: $white;
+   }

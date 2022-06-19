@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './Normalize.css';
+import "./App.scss";
+import Header from "./components/header/Header";
+import HomeView from 'views/HomeView/HomeView';
+import Footer from 'components/footer/Footer';
+import Disclaimer from 'components/disclaimer/Disclaimer';
 
-function App() {
+const App = () => {
+  let  disclaimerOpen = true;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Disclaimer />
+      <Header />
+       <main  className={(disclaimerOpen) ? "disclaimerOpen": "disclaimerClosed" } >
+        <HomeView />
+        <Footer />
+      </main>
+    </>
   );
 }
 
