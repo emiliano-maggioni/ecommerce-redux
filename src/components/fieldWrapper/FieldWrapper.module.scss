@@ -1,0 +1,27 @@
+@import "Utility.scss";
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.heading {
+    display: flex;
+    padding-bottom: 0.5rem;
+    min-height: 1.625rem;
+}
+
+.heading>strong {
+    color: $black;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+.heading>span {
+    color: $grey;
+    font-weight: bold;
+    padding-left: 0.4rem;
+}
+
+.container fieldset {
+    border-radius: 0rem;
+}

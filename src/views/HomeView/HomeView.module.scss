@@ -1,5 +1,32 @@
 @import "Utility.scss";
 
 .container{
-    padding: 1.2rem 0.46rem;
+    flex-direction: column;
+    padding: 3.18rem $paddingDef;   
+}
+
+.carouselContainer{
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+    
+.container > article{
+    width:100%;
+}
+
+
+@media screen and (min-width: 992px) {   
+    .container{
+        flex-direction: row; 
+
+    }
+    
+    .container > article{
+        width:30.625rem;
+    }
+
+    
+
 }

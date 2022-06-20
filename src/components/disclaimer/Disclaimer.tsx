@@ -6,8 +6,10 @@ const Disclaimer = () => {
 
   return (
       <div className={classes.container}>
-        <span>start selling your products or buy them from anywhere!</span>
-        <CloseRoundedIcon />
+        <div>
+          <span className={classes.text}>start selling your products or buy them from anywhere!</span>
+          <CloseRoundedIcon />
+        </div>
       </div>
   );
 }

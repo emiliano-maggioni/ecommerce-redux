@@ -24,9 +24,8 @@ body *{
     height: 100vh;
 }
 
-main.disclaimerOpen{
-  height:calc(100vh - ($disclaimerHeightM + $headerHeightM));
-  margin-top: ($disclaimerHeightM + $headerHeightM);
+main{
+  width: 100%;
   background:$white;
   z-index:$indexLow;  
   overflow:auto;
@@ -34,19 +33,21 @@ main.disclaimerOpen{
   overflow-y:scroll;  
 }
 
-main>section {
-  box-sizing: border-box;  
-  padding: $paddingViews;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding-bottom:2.5rem;
+main.disclaimerOpen{
+  height:calc(100vh - ($disclaimerHeightM + $headerHeightM));
+  margin-top: ($disclaimerHeightM + $headerHeightM);
 }
-
 
 main.disclaimerOpen >section {
   min-height: calc(100vh - ($disclaimerHeightM + $headerHeightM + $footerHeight));
 } 
+
+main > section {
+  box-sizing: border-box;  
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
 
 div p.MuiFormHelperText-root{
   color:#ff0000;
@@ -59,14 +60,52 @@ div.MuiOutlinedInput-root.Mui-focused fieldset.MuiOutlinedInput-notchedOutline{
   border-color: $black;
 }
 
+
+/*  SET INPUT STYLES */
+.inputBase input {
+  background: #fff;
+  color:$grey2; 
+  height: 2.5rem;
+  padding: 0.4rem 0.6rem;
+  box-sizing: border-box;
+  font-family:$defFamily;
+}
+div.MuiInputBase-root{    font-family:$defFamily; }
+
+div.MuiSelect-select {
+  background: #fff;
+  color:$grey2; 
+}
+p.MuiFormHelperText-root{
+  color:$redForm;
+  margin-left: 0.6rem;
+}
+
+input:focus, .MuiInputBase-root.Mui-focused, textarea:focus {
+  outline: 1px solid $grey;
+  border-radius: 0px;
+}
+
+.MuiInputBase-root.Mui-focused, .Mui-focused.MuiOutlinedInput-notchedOutline, fieldset {
+  border-width:1px !important;
+  border-color:$grey !important;  
+}
+
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  main {
-    margin-top: $headerHeight;
-    height: calc(100% - $headerHeight);
-  }
+  main > section {    
+    max-width: $contentWidth;
 
-  main>section {    min-height: calc(100vh - $headerHeight);   }
+  }
+  
+  main.disclaimerOpen {
+    margin-top: ($disclaimerHeight + $headerHeight);
+    height:calc(100vh - ($disclaimerHeight + $headerHeight));
+  }
+    
+  main.disclaimerOpen >section {
+    min-height: calc(100vh - ($disclaimerHeight + $headerHeight + $footerHeight));
+  } 
 
 
 }

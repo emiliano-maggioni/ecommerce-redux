@@ -25,14 +25,20 @@
 @media screen and (min-width: 992px) {        
     .container{
         height: $headerHeight;
+        top:$disclaimerHeight;
     }
     .topBar{
-        height: 7.6rem;
+        height: 6.87rem;
+        max-width:$contentWidth;
+        margin: 0 auto;
+        position: relative;
      }
      
     .topBar > button{
         position: absolute;
         right:0rem;
+        display: flex;
     }
+    
 
 }
