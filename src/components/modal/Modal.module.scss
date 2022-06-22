@@ -5,16 +5,19 @@
     background:$white;
     padding: 1.2rem 1.2rem 2rem 1.2rem;
     flex-direction: column;
-    width: 48rem;
-    max-width: 90vw;
+    width: 100%;
 }
 .container h2{
     display: flex;
-    padding: 1rem;
+    max-width: 100%;
+    padding: 1rem 0.4rem;
     margin-top: 0px;
 }
 .container  h2 svg{
     margin-left: auto;
     cursor:pointer;
 }
-.container li{  padding: 0.4rem 0rem; }
+.container li{  
+    max-width: 100%;
+    margin:0.4rem 0rem;
+ }

@@ -1,8 +1,8 @@
 import ButtonDefault from "components/button/ButtonDefault";
-import classes from "./Disclaimer.module.scss";
+import classes from "./MessageBar.module.scss";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
-const Disclaimer = () => {
+const MessageBar = () => {
 
   return (
       <div className={classes.container}>
@@ -14,4 +14,4 @@ const Disclaimer = () => {
   );
 }
 
-export default Disclaimer;
+export default MessageBar;

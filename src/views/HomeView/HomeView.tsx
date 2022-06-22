@@ -1,25 +1,30 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import classes from "./HomeView.module.scss";
 import Loader from 'components/loader/Loader';
 import ProductInfo from './components/productInfo/ProductInfo';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductData } from 'store/products';
+import CarouselBase from 'components/carousel/CarouselBase';
 
 const HomeView = () => {
-  let prodInfo = {
-    title:"The Atelier Tailored Coat",
-    price:"$499.00",
-    availability :"n stock",
-    productcode:"#4657",
-    tags:"acascascascasc",
-    description:"Sleek, polished, and boasting an impeccably modern fit, this blue, 2-button Lazio suit features a notch lapel, flap pockets, and accompanying flat front trousers—all in pure wool by Vitale Barberis Canonico.",
+  const prodInfo = useSelector((state: any) => state.mainReducer.products);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch<any>(getProductData());
+  }, []);
   
-  }
   return (
-     <section className={classes.container} >     
-          <div  className={classes.carouselContainer}>
-            <img src="/carousel.jpg" alt="" />
+    <section className={classes.container} >
+      {(prodInfo) ? (<>
+          <div className={classes.carouselContainer}>
+            {/* <img src="/carousel.jpg" alt="" /> */} 
+           <CarouselBase images={prodInfo.urlImages} />
           </div>
           <ProductInfo info={prodInfo} />
-     </section>
+        </>)
+        : <Loader />}
+
+    </section>
   );
 }
 

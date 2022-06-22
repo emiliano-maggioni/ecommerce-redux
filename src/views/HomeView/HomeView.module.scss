@@ -2,7 +2,7 @@
 
 .container{
     flex-direction: column;
-    padding: 3.18rem $paddingDef;   
+    padding: 1rem $paddingDef 3.18rem $paddingDef;   
 }
 
 .carouselContainer{
@@ -10,7 +10,6 @@
     flex: 1;
     overflow: hidden;
 }
-
     
 .container > article{
     width:100%;
@@ -20,13 +19,15 @@
 @media screen and (min-width: 992px) {   
     .container{
         flex-direction: row; 
-
+        padding-top: 2.43rem;
     }
     
     .container > article{
         width:30.625rem;
     }
-
-    
+        
+    .carouselContainer, .container > article{
+        padding:0.5rem;
+    }    
 
 }

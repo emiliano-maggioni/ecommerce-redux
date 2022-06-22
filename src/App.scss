@@ -33,13 +33,13 @@ main{
   overflow-y:scroll;  
 }
 
-main.disclaimerOpen{
-  height:calc(100vh - ($disclaimerHeightM + $headerHeightM));
-  margin-top: ($disclaimerHeightM + $headerHeightM);
+main.messageBarOpen{
+  height:calc(100vh - ($messageBarHeightM + $headerHeightM));
+  margin-top: ($messageBarHeightM + $headerHeightM);
 }
 
-main.disclaimerOpen >section {
-  min-height: calc(100vh - ($disclaimerHeightM + $headerHeightM + $footerHeight));
+main.messageBarOpen >section {
+  min-height: calc(100vh - ($messageBarHeightM + $headerHeightM + $footerHeight));
 } 
 
 main > section {
@@ -60,22 +60,29 @@ div.MuiOutlinedInput-root.Mui-focused fieldset.MuiOutlinedInput-notchedOutline{
   border-color: $black;
 }
 
+.MuiDialog-paperScrollPaper{
+  overflow-x:hidden;
+  width: 30rem;
+  max-width: 90%;
+  margin: 0px;
+}
+
 
 /*  SET INPUT STYLES */
-.inputBase input {
-  background: #fff;
-  color:$grey2; 
-  height: 2.5rem;
-  padding: 0.4rem 0.6rem;
-  box-sizing: border-box;
-  font-family:$defFamily;
-}
 div.MuiInputBase-root{    font-family:$defFamily; }
 
-div.MuiSelect-select {
+.inputBase input, div.MuiSelect-select, input.MuiInputBase-input {
   background: #fff;
   color:$grey2; 
+  padding: 0.37rem 0.6rem;
+  font-size: 0.81rem;
+  font-weight: 300;
+  font-family:$defFamily;
 }
+ input.MuiInputBase-input {
+  padding: 0.52rem 0.6rem;
+}
+
 p.MuiFormHelperText-root{
   color:$redForm;
   margin-left: 0.6rem;
@@ -98,13 +105,13 @@ input:focus, .MuiInputBase-root.Mui-focused, textarea:focus {
 
   }
   
-  main.disclaimerOpen {
-    margin-top: ($disclaimerHeight + $headerHeight);
-    height:calc(100vh - ($disclaimerHeight + $headerHeight));
+  main.messageBarOpen {
+    margin-top: ($messageBarHeight + $headerHeight);
+    height:calc(100vh - ($messageBarHeight + $headerHeight));
   }
     
-  main.disclaimerOpen >section {
-    min-height: calc(100vh - ($disclaimerHeight + $headerHeight + $footerHeight));
+  main.messageBarOpen >section {
+    min-height: calc(100vh - ($messageBarHeight + $headerHeight + $footerHeight));
   } 
 
 

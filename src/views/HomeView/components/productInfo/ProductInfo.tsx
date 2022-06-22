@@ -2,39 +2,52 @@ import ButtonDefault from "components/button/ButtonDefault";
 import classes from "./ProductInfo.module.scss";
 import FieldWrapper from "components/fieldWrapper/FieldWrapper";
 import { useForm } from "react-hook-form";
-import { FormControl, Select, MenuItem, FormHelperText } from "@mui/material";
+import { FormControl, Select, MenuItem, FormHelperText, TextField } from "@mui/material";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { CartElement, productInfo } from "utility/types";
+import { addToCart } from "store/products";
+import { useDispatch } from "react-redux";
 
 const ProductInfo = (props: any) => {
+  const dispatch = useDispatch();
+  const { code, custom, description, isHoganByYou, largeSizeDress, name, price, salablestores, sizeType, stock, tag, additionalInfo, sizes, colorSizeOptions }: productInfo = props.info;
 
-  const { register, handleSubmit, formState: { errors }, watch, } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     mode: "onSubmit",
   });
+
+  // const addProductToCart = (data: CartElement) => {    
+  //     dispatch<any>(addToCart(data));
+  // };
+  
 
   const onSubmit = (data: any) => {
     console.log("data:", data);
     if (data) {
-      // saveOrder(data);      
+      dispatch<any>(addToCart(data));           
     }
   }
-  const defValues = [{ id: 1, value: "Valore 1" }, { id: 2, value: "Valore 2" }, { id: 3, value: "Valore 3" }];
-
+  const colorOptions = colorSizeOptions.split(",");
+  const sizesOptions = sizes.split(",");
+ 
   return (
     <article className={classes.container}>
-      <h2>{props.info.title}</h2>
-      <span className={classes.price}>{props.info.price}</span>
-      <p className={classes.properties}><span className={classes.label}>Availability:</span><span>{props.info.price}</span></p>
-      <p className={classes.properties}><span className={classes.label}>Product Code:</span><span>{props.info.price}</span></p>
-      <p className={classes.properties}><span className={classes.label}>Tags:</span><span>{props.info.price}</span></p>
-      <p className={classes.description}>{props.info.description}</p>
+      <h2>{name}</h2>
+      <span className={classes.price}>{price}€</span>
+      <p className={classes.properties}><span className={classes.label}>Availability:</span><span>{stock.stockLevelStatus}</span></p>
+      <p className={classes.properties}><span className={classes.label}>Product Code:</span><span>{code}</span></p>
+      <p className={classes.properties}><span className={classes.label}>Tags:</span><span>{tag}</span></p>
+      <p className={classes.description}>{description}</p>
+
+
       <ul>
-        <li>Dark blue suit for a tone-on-tone look</li>
-        <li>Regular fit</li>
-        <li>100% Cotton</li>
-        <li>Free shipping with 4 days delivery</li>
+        {Object.keys(additionalInfo).map((keyName, i) => (
+          <li key={i}>{additionalInfo[keyName]}</li>
+        ))}
       </ul>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={classes.fieldsRow}>
-        <FieldWrapper title="COLOR" required={true} >
+          <FieldWrapper title="COLOR"  >
             <FormControl>
               <Select
                 {...register("color", { required: "Select color" })}
@@ -42,52 +55,53 @@ const ProductInfo = (props: any) => {
                 size="small"
                 displayEmpty
                 label=""
+                defaultValue=""
               >
-                <MenuItem key="" value="" >Select</MenuItem>
-                {defValues.map((el, index) => <MenuItem key={el.id} value={el.id}>{el.value}</MenuItem>)}
+                <MenuItem key="" value="" >Select color</MenuItem>
+                {colorOptions.map((el, index) => <MenuItem key={el} value={el}>{el}</MenuItem>)}
               </Select>
               <FormHelperText>{!!errors.color ? errors.color.message : null}</FormHelperText>
             </FormControl>
           </FieldWrapper>
-          <FieldWrapper title="SIZE" required={true} >
+          <FieldWrapper title="SIZE" >
             <FormControl>
               <Select
-                {...register("color", { required: "Select color" })}
+                {...register("size", { required: "Select size" })}
                 className={classes.input}
                 size="small"
                 displayEmpty
                 label=""
+                defaultValue=""
               >
                 <MenuItem key="" value="" >Select</MenuItem>
-                {defValues.map((el, index) => <MenuItem key={el.id} value={el.id}>{el.value}</MenuItem>)}
+                {sizesOptions.map((el, index) => <MenuItem key={el} value={el}>{el}</MenuItem>)}
               </Select>
-              <FormHelperText>{!!errors.color ? errors.color.message : null}</FormHelperText>
+              <FormHelperText>{!!errors.size ? errors.size.message : null}</FormHelperText>
             </FormControl>
           </FieldWrapper>
-          <FieldWrapper title="QTY" required={true} >
+          <FieldWrapper title="QTY"  >
             <FormControl>
-              <Select
-                {...register("color", { required: "Select color" })}
-                className={classes.input}
-                size="small"
-                displayEmpty
+              <TextField
+                {...register("quantity", { required: "Select qty" })}
+                id="outlined-number"
                 label=""
-              >
-                <MenuItem key="" value="" >Select</MenuItem>
-                {defValues.map((el, index) => <MenuItem key={el.id} value={el.id}>{el.value}</MenuItem>)}
-              </Select>
-              <FormHelperText>{!!errors.color ? errors.color.message : null}</FormHelperText>
+                size="small"
+                type="number"
+                className={classes.input} 
+                inputProps={{ min: 1, max: stock.stockLevelAvailable}} 
+              />
+              <FormHelperText>{!!errors.quantity ? errors.quantity.message : null}</FormHelperText>
             </FormControl>
           </FieldWrapper>
         </div>
         <div className={classes.btContainer}>
-        <ButtonDefault  text="ADD TO WISHLIST"  />
-        <ButtonDefault  text="ADD TO WISHLIST"  />
+          <ButtonDefault text="ADD TO CART" variant="black" type="submit" />
+          <ButtonDefault text="ADD TO WISHLIST" type="button"  ><FavoriteBorderIcon /></ButtonDefault>
         </div>
       </form>
 
     </article>
-  );
+  ); 
 }
 
 export default ProductInfo;

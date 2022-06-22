@@ -3,6 +3,7 @@ import classes from "./Modal.module.scss";
 import Dialog from '@mui/material/Dialog';
 import Grow from "@mui/material/Grow";
 import CloseIcon from "@mui/icons-material/Close";
+import { CartElement } from 'utility/types';
 
 const Modal = (props:any) => {
 
@@ -15,10 +16,11 @@ const Modal = (props:any) => {
       maxWidth={false}
     >
       <div className={classes.container} >
-        <h2>Cart  <CloseIcon onClick={() => props.onClose()} /></h2>
-        {(props.cart?.length) && (<ul>
-          {props.cart.map((el:any,index:any)=> <li key={index} ><strong>Product:</strong> {el.id} - <strong>colorCode:</strong> {el.colorCode} - <strong>storageCode:</strong> {el.storageCode}</li>)}
-          </ul>)}
+        <h2>CART  <CloseIcon onClick={() => props.onClose()} /></h2>
+        {(props.cart?.length > 0) ? (<ul>
+          {props.cart.map((el:CartElement,index:any)=> <li key={index} ><strong>Color:</strong> {el.color} - <strong>Size:</strong> {el.size} - <strong>Quantity:</strong> {el.quantity}</li>)}
+          </ul>)
+          : <p>Your cart is empty</p>}
       </div>
     </Dialog>
   );

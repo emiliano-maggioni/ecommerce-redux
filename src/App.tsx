@@ -3,19 +3,22 @@ import "./App.scss";
 import Header from "./components/header/Header";
 import HomeView from 'views/HomeView/HomeView';
 import Footer from 'components/footer/Footer';
-import Disclaimer from 'components/disclaimer/Disclaimer';
+import MessageBar from 'components/messageBar/MessageBar';
+import { Provider } from "react-redux";
+import store from 'store';
 
 const App = () => {
-  let  disclaimerOpen = true;
+  let  messageBarOpen = true;
   return (
-    <>
-      <Disclaimer />
+
+      <Provider store={store} >
+      <MessageBar />
       <Header />
-       <main  className={(disclaimerOpen) ? "disclaimerOpen": "disclaimerClosed" } >
+       <main  className={(messageBarOpen) ? "messageBarOpen": "messageBarClosed" } >
         <HomeView />
         <Footer />
       </main>
-    </>
+      </Provider>
   );
 }
 

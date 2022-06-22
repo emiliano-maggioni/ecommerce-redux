@@ -3,10 +3,11 @@
 .container {
     display: flex;
     flex-direction: column;
+    margin-bottom: 0.6rem;
 }
 .heading {
     display: flex;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
     min-height: 1.625rem;
 }
 
@@ -25,3 +26,13 @@
 .container fieldset {
     border-radius: 0rem;
 }
+
+@media screen and (min-width: 992px) {   
+
+    .container {
+        margin-right:1.8rem;
+        flex:1;
+        min-height: 6.37rem;
+    }
+
+    }

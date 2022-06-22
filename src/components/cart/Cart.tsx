@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useState } from 'react'
 import classes from "./Cart.module.scss";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import { Context } from "contexts/Context";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Modal from "components/modal/Modal";
+import { useSelector } from 'react-redux';
 
-const Cart = (props:any) => {
-  //const defcontext = useContext(Context);
-  const [open, setOpen] = React.useState(false);
+const Cart = () => {
+  const cart = useSelector((state: any) => state.mainReducer.cart);
+  const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -15,14 +15,10 @@ const Cart = (props:any) => {
   };
 
   return (<>
-    <div className={classes.container} onClick={() => handleClickOpen()}  >
-      CART 
-      {/* {defcontext.cart?.length} */}
-      <ShoppingCartIcon />
+    <div className={classes.container} onClick={() => handleClickOpen()}  >      
+      <ShoppingCartOutlinedIcon />({cart.length})
     </div>
-    <Modal open={open} onClose={handleClose} 
-    // cart={defcontext.cart} 
-    />
+    <Modal open={open} onClose={handleClose} cart={cart}  />
   </>
   );
 }

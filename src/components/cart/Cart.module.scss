@@ -1,15 +1,16 @@
 @import "Utility.scss";
 
 .container{
-    display: flex;
-    align-items: center;
-    min-width: 6rem;
-    justify-content: space-between;
+    display: flex;    
     cursor: pointer;
+    padding-right:0.8rem;
+    align-items: center;
+    color:$grey2;
 }
 
 .container > svg{
     font-size: 1.8rem;
+    color:$grey2;
 }
 
 
