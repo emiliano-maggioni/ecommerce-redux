@@ -1,7 +1,7 @@
 # exercise-app-reactjs
 Web App exercise made with ReactJS, Redux, HTML5, CSS (with SASS), Typescript, Material UI
 
-It's a test responsive where you can view your product, add it to cart and view the current cart.
+It's a ReactJS app test responsive where you can view your product, add it to cart and view the current cart.
 <br /><br /><br />
 
 
