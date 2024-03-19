@@ -1,4 +1,4 @@
-# exercise-app-reactjs
+# ecommerce-redux
 Web App exercise made with ReactJS, Redux, HTML5, CSS (with SASS), Typescript, Material UI
 
 It's a ReactJS app test responsive where you can view your product, add it to cart and view the current cart.

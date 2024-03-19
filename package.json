@@ -1,5 +1,5 @@
 {
-  "name": "exercise-app-reactjs",
+  "name": "ecommerce-redux",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

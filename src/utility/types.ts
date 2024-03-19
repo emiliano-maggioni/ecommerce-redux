@@ -21,7 +21,6 @@ export type CartElement = {
     size:string;
 }
 
-   
   export type defState = {
     products: productInfo | null; 
     cart: any[];
